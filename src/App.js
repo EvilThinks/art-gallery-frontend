@@ -1,15 +1,16 @@
 import React from "react";
-import Home from "./components/Layout/home/Home-classic";
-import "./media/css/bootstrap.css";
-import "./media/css/landing.css";
-import "./media/css/responsive.css";
-import "./media/css/style.css";
+import { BrowserRouter } from "react-router-dom";
+import AppRouter from "./routes/AppRouter";
+import "./media/scss/bootstrap.scss";
+import "./media/scss/style.scss";
+import "./media/scss/responsive.scss";
+
 
 function App() {
   return (
-    <div className="App">
-      <Home></Home>
-    </div>
+    <BrowserRouter>
+      <AppRouter></AppRouter>
+    </BrowserRouter>
   );
 }
 
