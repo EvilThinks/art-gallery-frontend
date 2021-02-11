@@ -25,10 +25,11 @@ const HomeDefault = () => {
       const currentExibitions = await getCurrentExibitions();
       const collectionsData = await getCollections();
       const exibitionsOnView = await getExibitionsOnView();
+      console.log(currentExibitions,collectionsData,exibitionsOnView)
       if (!isUnmounted) {
-        setCurrentlyOnView(currentExibitions.data.data);
-        setCollections(collectionsData.data.data);
-        setExibitionsOnView(exibitionsOnView.data.data);
+        setCurrentlyOnView(currentExibitions);
+        setCollections(collectionsData);
+        setExibitionsOnView(exibitionsOnView);
       }
     };
     getCurrentExibitionsData();

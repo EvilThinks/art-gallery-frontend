@@ -1,42 +1,27 @@
 import axios from "axios";
-
 axios.defaults.headers.post["Accept"] = "*/*";
-const instance = axios.create({
-  baseURL: "http://localhost:3000",
-  headers: {
-    Accept: "*/*",
-    "Content-Type": "application/json",
-  },
-  withCredentials: false,
-});
 const jsonInstance = axios.create({
-  baseURL: "http://localhost:3000/api",
+  baseURL: "http://localhost:8080/api",
   headers: {
     "Content-Type": "application/json",
   },
-  withCredentials: false,
 });
-instance.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    return error.response ? error.response : error;
-  }
-);
+
 jsonInstance.interceptors.response.use(
   (response) => {
-    return response;
+    return response.data.data;
   },
   (error) => {
-    return error.response ? error.response : error;
+    return { data: null, message: error.message, error: true };
   }
 );
 
 export const getCurrentExibitions = () =>
-  jsonInstance.get("exibitions/current").then((response) => {
+  jsonInstance.get("exhibitions/current").then((response) => {
     return response;
   });
 export const getExibitionsOnView = () =>
-  jsonInstance.get("exibitions/onview").then((response) => {
+  jsonInstance.get("exhibitions/onview").then((response) => {
     return response;
   });
 export const getCollections = (search = "") => {

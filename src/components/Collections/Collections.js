@@ -17,7 +17,8 @@ function Collections({ location }) {
       setLoading(true);
       try {
         const collectionsData = await getCollections(location.search);
-        setData(collectionsData.data.data);
+        console.log(collectionsData)
+        setData(collectionsData);
       } catch (error) {
         console.log(error.message);
       }
